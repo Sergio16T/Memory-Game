@@ -1,0 +1,63 @@
+html {
+    height: 100%; 
+}
+body {
+    height: 100%; 
+    margin: 0; 
+}
+h1 {
+    text-align: center; 
+}
+.card-grid {
+    display: flex; 
+    flex-wrap: wrap; 
+    align-content: space-around;
+    padding: 10px; 
+    
+}
+.front-back {
+    background-size: cover; 
+    margin: 10px; 
+}
+.front-back:hover {
+    cursor: pointer;
+}
+.front-card, .back-card {
+    height: 400px;
+    width: 40vh; 
+    background-size: cover; 
+    background-position: center; 
+}
+/*
+.front-card {
+    display: none; 
+}*/ 
+.back-card {
+    background-image: url(images/backOfCard.jpeg);
+    
+}
+#diamonds7 {
+    position: absolute;
+    background-image: url(images/7ofDiamonds.png);
+}
+#ace-hearts {
+    position: absolute;
+    background-image: url(images/aceOfHearts.jpeg);
+
+}
+#queen-clubs {
+    position: absolute;
+    background-image: url(images/queenOfClubs.png);
+}
+#ace-diamonds {
+    position: absolute; 
+    background-image:url(images/aceOfDiamonds.png);
+}
+#hearts7 {
+    position: absolute;
+    background-image: url(images/7ofHearts.jpg); 
+}
+#queen-spades {
+    position: absolute; 
+    background-image: url(images/queenOfSpades.png);
+}
