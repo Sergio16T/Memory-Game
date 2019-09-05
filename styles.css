@@ -28,36 +28,61 @@ h1 {
     background-size: cover; 
     background-position: center; 
 }
-/*
+
 .front-card {
     display: none; 
-}*/ 
+}  
 .back-card {
     background-image: url(images/backOfCard.jpeg);
     
 }
+#ace-hearts {
+    position: absolute;
+    background-image: url(images/aceOfHearts.jpeg);  
+    
+}
+
 #diamonds7 {
     position: absolute;
     background-image: url(images/7ofDiamonds.png);
-}
-#ace-hearts {
-    position: absolute;
-    background-image: url(images/aceOfHearts.jpeg);
 
 }
+
 #queen-clubs {
     position: absolute;
     background-image: url(images/queenOfClubs.png);
+
 }
 #ace-diamonds {
     position: absolute; 
     background-image:url(images/aceOfDiamonds.png);
+
 }
 #hearts7 {
     position: absolute;
     background-image: url(images/7ofHearts.jpg); 
+
 }
 #queen-spades {
     position: absolute; 
     background-image: url(images/queenOfSpades.png);
+}
+
+#card-1 {
+    order: 0; 
+}
+#card-2 {
+    order: 1; 
+}
+#card-3 {
+    order: 2; 
+}
+#card-4 {
+    order: 3; 
+}
+#card-5 {
+    order: 4; 
+}
+#card-6 {
+    order: 5; 
 }

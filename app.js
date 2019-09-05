@@ -26,39 +26,39 @@ function hideCard() {
         tempArray.splice(0,2);  
     }
     let index = this.firstElementChild.getAttribute("data-index");  
-   
+   /* below code was useful when I was testing game with front-cards display block 
+      to make sure the code game logic was working. Now I'm hiding the cards for memory game. 
+
     if (cardContainer[index].firstElementChild.style.display == "none") { 
         cardContainer[index].firstElementChild.style.display ="block"; 
     } 
     else  {
         cardContainer[index].firstElementChild.style.display = "none";
 
-    }  
+    }  */ 
+    cardContainer[index].firstElementChild.style.display ="block"; 
+
     let rank = this.firstElementChild.getAttribute("data-rank"); 
-    
+
    
     tempArray.push({rank: rank, index: index});
+  
+    // added setTimeout(function() {put existing while loop here}, interval in ms); 
+    setTimeout(function() {
     while (click == 2) {
-        
+    
     if (tempArray[0].rank ==tempArray[1].rank) {
-        cardContainer[tempArray[0].index].firstElementChild.style.display ="none"; 
-        cardContainer[tempArray[1].index].firstElementChild.style.display ="none"; 
-    } else { 
         cardContainer[tempArray[0].index].firstElementChild.style.display ="block"; 
         cardContainer[tempArray[1].index].firstElementChild.style.display ="block"; 
+    } else { 
+        cardContainer[tempArray[0].index].firstElementChild.style.display ="none"; 
+        cardContainer[tempArray[1].index].firstElementChild.style.display ="none"; 
     }
     break; 
     }
-     
-     // below code doesn't do what I want just an idea.. trying to match values... 
-    
-     
-     /*
-    if (tempArray.length >2 && tempArray[] == array[indexCounter-1]) {
-        this.firstElementChild.style.display ="none"; 
-    } 
-    */ 
-   }
+},2000);
+   
+}
 
 
 
