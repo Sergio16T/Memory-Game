@@ -16,8 +16,15 @@ h1 {
     
 }
 .front-back {
+    /* potentially add position and transition to test animation for card-deck shuffle would 
+    have to stop using flex-box */
     background-size: cover; 
-    margin: 10px; 
+    margin: 10px;
+    
+}
+img {
+    height: 100%; 
+    width: 100%; 
 }
 .front-back:hover {
     cursor: pointer;
