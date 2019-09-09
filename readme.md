@@ -1,3 +1,4 @@
+![Memory Game Screen Shot](images/screenShot.png)
 Three versions with .js file. 
 
 Complete Version is in memory1.js 
