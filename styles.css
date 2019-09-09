@@ -38,7 +38,10 @@ img {
 
 .front-card {
     display: none; 
-}  
+} 
+.front-card-display {
+    display: block; 
+}
 .back-card {
     background-image: url(images/backOfCard.jpeg);
     
