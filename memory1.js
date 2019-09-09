@@ -16,7 +16,7 @@ shuffleCards();
 
 cards.forEach((card,index) => card.setAttribute("data-index", index)); 
 cardContainer.forEach(container => container.addEventListener("click", displayCard)); 
-
+cardContainer.forEach(container => container.setAttribute("data-matched", "false")); 
  
 function displayCard() {
     click += 1;
@@ -46,13 +46,21 @@ function displayCard() {
             cardContainer[tempArray[0].index].firstElementChild.classList.add('front-card-display'); 
             cardContainer[tempArray[1].index].firstElementChild.classList.add('front-card-display'); 
             shuffleCardIndex();
-            cardContainer.forEach(container => container.addEventListener("click", displayCard)); 
+            cardContainer.forEach(container => {
+                if(container.dataset.matched == "false") {
+                container.addEventListener("click", displayCard); 
+                }
+            }); 
             click = 0;
             tempArray.splice(0,2);
         } else { 
             cardContainer[tempArray[0].index].firstElementChild.classList.remove('front-card-display'); 
-            cardContainer[tempArray[1].index].firstElementChild.classList.remove('front-card-display'); 
-            cardContainer.forEach(container => container.addEventListener("click", displayCard)); 
+            cardContainer[tempArray[1].index].firstElementChild.classList.remove('front-card-display');
+            cardContainer.forEach(container => {
+                if(container.dataset.matched == "false") {
+                container.addEventListener("click", displayCard); 
+                }
+            });
             click = 0;
             tempArray.splice(0,2);
         }
