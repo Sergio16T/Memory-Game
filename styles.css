@@ -36,6 +36,10 @@ img {
     background-position: center; 
 }
 
+.front-back.flipped .front-card {
+    display: block;
+}
+
 .front-card {
     display: none; 
 } 
@@ -46,53 +50,34 @@ img {
     background-image: url(images/backOfCard.jpeg);
     
 }
-#ace-hearts {
+.ace-hearts .front-card {
     position: absolute;
     background-image: url(images/aceOfHearts.jpeg);  
     
 }
 
-#diamonds7 {
+.diamonds7 .front-card {
     position: absolute;
     background-image: url(images/7ofDiamonds.png);
 
 }
 
-#queen-clubs {
+.queen-clubs .front-card {
     position: absolute;
     background-image: url(images/queenOfClubs.png);
 
 }
-#ace-diamonds {
+.ace-diamonds .front-card {
     position: absolute; 
     background-image:url(images/aceOfDiamonds.png);
 
 }
-#hearts7 {
+.hearts7 .front-card{
     position: absolute;
     background-image: url(images/7ofHearts.jpg); 
 
 }
-#queen-spades {
+.queen-spades .front-card{
     position: absolute; 
     background-image: url(images/queenOfSpades.png);
-}
-
-#card-1 {
-    order: 0; 
-}
-#card-2 {
-    order: 1; 
-}
-#card-3 {
-    order: 2; 
-}
-#card-4 {
-    order: 3; 
-}
-#card-5 {
-    order: 4; 
-}
-#card-6 {
-    order: 5; 
 }

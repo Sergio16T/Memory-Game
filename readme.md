@@ -3,7 +3,7 @@ Three versions with .js file.
 
 Complete Version is in memory1.js 
 
-This version I completed by doing some additional research/studying. Reminded myself of concepts and learned a little more in-depth as needed as I was coding. Got a lot of practice with handling events, arrays, data-attributes, and DOM manipulation. 
+This version I completed by doing some additional research/studying, and with some mentorship. Reminded myself of concepts and learned a little more in-depth as needed as I was coding. Got a lot of practice with handling events, arrays, data-attributes, and DOM manipulation. 
 
 Going to continue studying and researching how I can make it better. 
 

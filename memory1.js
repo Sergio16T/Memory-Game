@@ -1,79 +1,71 @@
-const aceHearts = document.getElementById('ace-hearts'); 
-const aceDiamonds = document.getElementById('ace-diamonds');
-const queenSpades = document.getElementById('queen-spades');
-const queenClubs = document.getElementById('queen-clubs');
-const diamonds7 = document.getElementById('diamonds7'); 
-const hearts7 = document.getElementById('hearts7'); 
-const cards = document.querySelectorAll('.front-card'); 
-const backCards = document.querySelectorAll('.back-card'); 
-const cardContainer = document.querySelectorAll('.front-back'); 
+const cardGrid = document.querySelector('.card-grid'); 
 let tempArray =[];
-let click = 0; 
-let shuffleArray = [0, 1, 2, 3, 4, 5]; 
+let click = 0;  
+
+let arrayCardType= ["queen-spades", "ace-hearts", "ace-diamonds", "queen-clubs", "diamonds7", "hearts7"]; 
+for (let i =0; i< arrayCardType.length; i++) {
+    for(let j=0; j< 2; j++) {
+    let template = document.createElement('div'); 
+    template.innerHTML =`
+    <img class ="front-card">
+    <img class ="back-card">
+    `;
+    template.className = `front-back ${arrayCardType[i]}`; 
+    template.setAttribute("data-rank", i); 
+    cardGrid.appendChild(template);
+    }
+}
+const cardContainer = document.querySelectorAll('.front-back');
 let cardContainerArray = [...cardContainer];
 
 shuffleCards();
 
-cards.forEach((card,index) => card.setAttribute("data-index", index)); 
+cardContainer.forEach((container,index) => container.setAttribute("data-index", index)); 
 cardContainer.forEach(container => container.addEventListener("click", displayCard)); 
 cardContainer.forEach(container => container.setAttribute("data-matched", "false")); 
  
 function displayCard() {
-    click += 1;
-    let rank = this.firstElementChild.getAttribute("data-rank"); 
-    let identification = this.firstElementChild.id; 
-    let index = this.firstElementChild.getAttribute("data-index"); 
-
-    tempArray.push({rank: rank, index: index, elementId: identification});
-
-    cardContainer[index].firstElementChild.classList.add('front-card-display'); 
-
-    if (click == 2 && tempArray[1].elementId != tempArray[0].elementId) {
-        cardContainer.forEach(container => container.removeEventListener("click", displayCard)); 
-    } 
-    if (click ==2 && tempArray[1].elementId == tempArray[0].elementId) {
-        click -= 1; 
-        tempArray.splice(1,1);
-    } 
-    if (click ==2 && tempArray[0].rank ==tempArray[1].rank && tempArray[0].elementId != tempArray[1].elementId) {
-        cardContainer[tempArray[0].index].setAttribute("data-matched", "true"); 
-        cardContainer[tempArray[1].index].setAttribute("data-matched", "true"); 
+    if (click == 2) return; 
+    if (this.dataset.matched == "true") {
+        return; 
     }
+    if (this.classList.contains('flipped')) {
+        return;
+    }
+
+    click += 1;
+    let rank = this.getAttribute("data-rank"); 
+    let index = this.getAttribute("data-index"); 
+
+    tempArray.push({rank: rank, index: index});
+
+    cardContainer[index].classList.add('flipped'); 
+
+    if (click ==2) {
     setTimeout(function()  {
-        while (click == 2) {
-        
-        if (tempArray[0].rank ==tempArray[1].rank && tempArray[0].elementId != tempArray[1].elementId) {
-            cardContainer[tempArray[0].index].firstElementChild.classList.add('front-card-display'); 
-            cardContainer[tempArray[1].index].firstElementChild.classList.add('front-card-display'); 
+
+        if (tempArray[0].rank ==tempArray[1].rank) {
+            cardContainer[tempArray[0].index].setAttribute("data-matched", "true"); 
+            cardContainer[tempArray[1].index].setAttribute("data-matched", "true"); 
             shuffleCardIndex();
-            cardContainer.forEach(container => {
-                if(container.dataset.matched == "false") {
-                container.addEventListener("click", displayCard); 
-                }
-            }); 
-            click = 0;
-            tempArray.splice(0,2);
+          
         } else { 
-            cardContainer[tempArray[0].index].firstElementChild.classList.remove('front-card-display'); 
-            cardContainer[tempArray[1].index].firstElementChild.classList.remove('front-card-display');
-            cardContainer.forEach(container => {
-                if(container.dataset.matched == "false") {
-                container.addEventListener("click", displayCard); 
-                }
-            });
-            click = 0;
-            tempArray.splice(0,2);
+            cardContainer[tempArray[0].index].classList.remove('flipped'); 
+            cardContainer[tempArray[1].index].classList.remove('flipped');
         }
-        break; 
-        }
+        click = 0;
+        tempArray.splice(0,2);
+       
     },1000);
 
-   
+    }
 }
 
 
 function shuffleCards() {
-    let newArray = shuffle(shuffleArray); 
+    // _ can represent container: unused argument value placeHolder 
+    let shuffleArray = cardContainerArray.map((_, index) => index);  
+    let newArray = shuffle2(shuffleArray); 
 
     for(let i =0; i< newArray.length; i++){
         cardContainer[i].style.order = newArray[i]; 
@@ -84,7 +76,7 @@ function shuffleCards() {
 function shuffleCardIndex() {
     if (cardContainerArray.every(x => x.getAttribute("data-matched") =="true")) { 
         shuffleCards(); 
-        cards.forEach(card => card.classList.remove('front-card-display'));
+        cardContainer.forEach(container => container.classList.remove('flipped'));
         cardContainer.forEach(container => container.dataset.matched = "false");
     } 
 
@@ -111,6 +103,13 @@ function shuffle(array) {
 
     return array;
 }
+// different shuffle better for larger deck assuming cards is array of objects; 
+function shuffle2(cards) {
+    return cards
+        .map(x => ({ card: x, rand:  Math.random() }))
+        .sort((a, b) => a.rand - b.rand)
+        .map(x => x.card);
+}
 
  
 /*
@@ -118,3 +117,4 @@ add play new game feature at end of game which can shuffle the cards
 and start over. would be really cool if cards actually shuffle on the screen however this 
 would require me to change away from flex-box order. and use a grid instead..and then adjust 
 */ 
+
