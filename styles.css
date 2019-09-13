@@ -30,8 +30,8 @@ img {
     cursor: pointer;
 }
 .front-card, .back-card {
-    height: 400px;
-    width: 40vh; 
+    height: 280px;
+    width: 200px; 
     background-size: cover; 
     background-position: center; 
 }
