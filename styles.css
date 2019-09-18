@@ -12,6 +12,7 @@ h1 {
     display: flex; 
     flex-wrap: wrap; 
     align-content: space-around;
+    justify-content: center; 
     padding: 10px; 
     
 }
@@ -80,4 +81,24 @@ img {
 .queen-spades .front-card{
     position: absolute; 
     background-image: url(images/queenOfSpades.png);
+}
+
+@media screen and (max-width: 739px) {
+.front-card, .back-card {
+    height: 12rem;
+    width: 8rem;
+}
+
+}
+@media screen and (min-width: 740px ) {
+.front-card, .back-card {
+    height: 14rem;
+    width: 10rem;
+}
+}
+@media screen and (min-width: 1200px){
+    .front-card, .back-card {
+        height: 16rem;
+        width: 11rem;
+    }
 }
