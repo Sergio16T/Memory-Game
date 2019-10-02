@@ -1,4 +1,7 @@
 ![Memory Game Screen Shot](images/screenShot.png)
+
+Click on cards to find exact matches. When a card is an exact match(same number and suit) it will match and stay up. Match all the card's to win the game and it will shuffle to enable multiple rounds of play! 
+
 Three versions with .js file. 
 
 Complete Version is in memory1.js 
